@@ -1,8 +1,16 @@
+import ProjectSidebar from "./components/ProjectSidebar";
+import ProjectInputPreview from "./components/ProjectInputPreview";
+import ProjectInput from "./components/ProjectInput";
+import ProjectView from "./components/ProjectView";
+
 function App() {
   return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
-    </>
+    <main className="py-10 bg-gray-300 flex min-h-svh">
+      <ProjectSidebar />
+      {/* <ProjectInputPreview /> */}
+      {/* <ProjectInput /> */}
+      <ProjectView />
+    </main>
   );
 }
 
