@@ -2,14 +2,22 @@ import Button from "./Button";
 import Input from "./Input";
 import Section from "./Section";
 
-export default function ProjectInput() {
+export default function ProjectInput({ onChangeContentDisplayed }) {
   return (
     <Section
       title="Add a new project!"
       buttons={
         <>
-          <Button content="Cancel" purpose="cancel" />
-          <Button content="Save" purpose="save" />
+          <Button
+            onClick={() => onChangeContentDisplayed("project-preview")}
+            content="Cancel"
+            purpose="cancel"
+          />
+          <Button
+            onClick={() => onChangeContentDisplayed("project-preview")}
+            content="Save"
+            purpose="save"
+          />
         </>
       }
     >

@@ -2,11 +2,17 @@ import Section from "./Section";
 import Button from "./Button";
 import TaskView from "./TaskView";
 
-export default function ProjectView() {
+export default function ProjectView({ onChangeContentDisplayed }) {
   return (
     <Section
       title="Learning React"
-      buttons={<Button content="Delete" purpose="delete" />}
+      buttons={
+        <Button
+          onClick={() => onChangeContentDisplayed("project-preview")}
+          content="Delete"
+          purpose="delete"
+        />
+      }
     >
       <p className=" text-gray-300 opacity-65">Nov 7, 2024</p>
       <p className=" text-white text-left">
