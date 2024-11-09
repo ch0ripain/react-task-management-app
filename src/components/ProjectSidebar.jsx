@@ -25,7 +25,7 @@ export default function ProjectSidebar({
                     ? "animate-pulse text-white bg-gradient-to-br from-pink-500 to-orange-400"
                     : "text-black bg-gray-200"
                 } pl-3 py-1 rounded-r-lg cursor-pointer font-bold`}
-                key={project.title}
+                key={`${project.title}-${projectIndex}`}
               >
                 {project.title}
               </p>

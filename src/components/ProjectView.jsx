@@ -14,7 +14,7 @@ export default function ProjectView({
       title={selectedProject.title}
       buttons={
         <Button
-          onClick={() => onDelete(selectedProject.title)}
+          onClick={() => onDelete(selectedProject.id)}
           content="Delete"
           purpose="delete"
         />

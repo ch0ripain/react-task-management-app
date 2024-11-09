@@ -1,25 +1,22 @@
 import Button from "./Button";
 import Input from "./Input";
 import Section from "./Section";
+import dateFormatter from "../utils/dateFormatter";
 
 import { useRef, useState } from "react";
 
+let currentDate = new Date();
+currentDate = currentDate.toLocaleDateString();
 export default function ProjectInput({
   onChangeContentDisplayed,
   onAddProject,
 }) {
-  const title = useRef("hola");
+  const [title, setTitle] = useState("");
   const description = useRef("");
   const dueDate = useRef("");
 
-  const [isDisabled, setIsDisabled] = useState(false);
-
-  if (
-    title.current.value === "" ||
-    description.current.value === "" ||
-    dueDate.current.value === ""
-  ) {
-    setIsDisabled(true);
+  function handleTitleChange(t) {
+    setTitle(t);
   }
 
   return (
@@ -35,22 +32,27 @@ export default function ProjectInput({
           <Button
             onClick={() => {
               onAddProject({
-                title: title.current.value,
-                description: description.current.value,
-                dueDate: dueDate.current.value,
+                id: 0,
+                title: title,
+                description: description.current.value
+                  ? description.current.value
+                  : "Project without description :(",
+                dueDate: dueDate.current.value
+                  ? dateFormatter(dueDate.current.value)
+                  : currentDate,
                 tasks: [],
               });
             }}
             content="Save"
             purpose="save"
-            disabled={isDisabled}
+            disabled={title === ""}
           />
         </>
       }
     >
       <Input
-        ref={title}
-        value={title.current.value}
+        value={title}
+        onChange={(e) => handleTitleChange(e.target.value)}
         name="title"
         labelFor="project"
         label="title"

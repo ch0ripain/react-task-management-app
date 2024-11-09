@@ -14,19 +14,25 @@ function App() {
   function handleChangeContentDisplayed(displayTitle, projectIndex) {
     if (projectIndex > -1) {
       selectedProjectRef.current.activeProjectIndex = projectIndex;
+      setActiveView(
+        `project-view-${selectedProjectRef.current.activeProjectIndex}`
+      );
+    } else {
+      selectedProjectRef.current.activeProjectIndex = null;
+      setActiveView(displayTitle);
     }
-    setActiveView(
-      projectIndex > -1
-        ? `project-view-${selectedProjectRef.current.activeProjectIndex}`
-        : displayTitle
-    );
   }
 
   const toastRef = useRef();
+  const projectId = useRef({
+    newId: -1,
+  });
 
   const [projects, setProjects] = useState([]);
 
   function handleAddProject(project) {
+    project.id = projectId.current.newId + 1;
+    projectId.current.newId = projectId.current.newId + 1;
     toastRef.current.open();
     setTimeout(() => {
       setProjects((prevProjects) => {
@@ -41,11 +47,11 @@ function App() {
     }, 700);
   }
 
-  function handleDeleteProject(title) {
+  function handleDeleteProject(id) {
     toastRef.current.open();
     setTimeout(() => {
       setProjects((prevProjects) =>
-        prevProjects.filter((project) => project.title != title)
+        prevProjects.filter((project) => project.id != id)
       );
       setActiveView("project-preview");
       selectedProjectRef.current.activeProjectIndex = null;
@@ -78,12 +84,12 @@ function App() {
     }, 700);
   }
 
-  function handleDeleteTask(task) {
+  function handleDeleteTask(taskId) {
     setProjects((prevProjects) => {
       const newProjects = [
         ...prevProjects.map((project, index) => {
           if (index === selectedProjectRef.current.activeProjectIndex) {
-            const newTasks = project.tasks.filter((t) => t !== task);
+            const newTasks = project.tasks.filter((t) => t.id !== taskId);
             const newProject = {
               ...project,
               tasks: [...newTasks],
