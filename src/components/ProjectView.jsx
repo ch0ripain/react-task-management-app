@@ -1,28 +1,33 @@
-import Section from "./Section";
 import Button from "./Button";
+import Section from "./Section";
 import TaskView from "./TaskView";
 
-export default function ProjectView({ onChangeContentDisplayed }) {
+export default function ProjectView({
+  onChangeContentDisplayed,
+  onDelete,
+  selectedProject,
+  onAddTask,
+  onDeleteTask,
+}) {
   return (
     <Section
-      title="Learning React"
+      title={selectedProject.title}
       buttons={
         <Button
-          onClick={() => onChangeContentDisplayed("project-preview")}
+          onClick={() => onDelete(selectedProject.title)}
           content="Delete"
           purpose="delete"
         />
       }
     >
-      <p className=" text-gray-300 opacity-65">Nov 7, 2024</p>
-      <p className=" text-white text-left">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, velit
-        consequatur voluptates exercitationem ipsa aperiam debitis, voluptatem
-        repellat nostrum et nulla deleniti sit hic eaque nesciunt provident quae
-        ipsum quis.
-      </p>
+      <p className=" text-gray-300 opacity-65">{selectedProject.dueDate}</p>
+      <p className=" text-white text-left">{selectedProject.description}</p>
       <hr></hr>
-      <TaskView />
+      <TaskView
+        tasks={selectedProject.tasks}
+        onAddTask={onAddTask}
+        onDeleteTask={onDeleteTask}
+      />
     </Section>
   );
 }
