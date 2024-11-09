@@ -24,7 +24,7 @@ export default function ProjectSidebar({
                   projectIndex === selectedProjectIndex
                     ? "animate-pulse text-white bg-gradient-to-br from-pink-500 to-orange-400"
                     : "text-black bg-gray-200"
-                } pl-3 py-1 rounded-r-lg cursor-pointer font-bold`}
+                } pl-3 py-1 pr-1 rounded-r-lg cursor-pointer font-bold`}
                 key={`${project.title}-${projectIndex}`}
               >
                 {project.title}
