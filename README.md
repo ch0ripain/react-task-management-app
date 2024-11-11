@@ -1,4 +1,4 @@
-<h1 align="center">💻 Simple Task Management App 💻</h1>
+<h1 align="center">☑️ Simple Task Management App ☑️</h1>
 <br/>
 <div align="center">
   <a href="https://skillicons.dev">
