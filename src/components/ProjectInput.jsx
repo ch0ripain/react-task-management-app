@@ -50,32 +50,34 @@ export default function ProjectInput({
         </>
       }
     >
-      <Input
-        value={title}
-        onChange={(e) => handleTitleChange(e.target.value)}
-        name="title"
-        labelFor="project"
-        label="title"
-        type="text"
-        required
-      />
-      <Input
-        ref={description}
-        name="description"
-        labelFor="project"
-        label="description"
-        textarea
-        type="text"
-        required
-      />
-      <Input
-        ref={dueDate}
-        name="dueDate"
-        labelFor="project"
-        label="due date"
-        type="date"
-        required
-      />
+      <form className="relative flex flex-col">
+        <Input
+          value={title}
+          onChange={(e) => handleTitleChange(e.target.value)}
+          name="title"
+          labelFor="project"
+          label="title"
+          type="text"
+          required
+        />
+        <Input
+          ref={description}
+          name="description"
+          labelFor="project"
+          label="description"
+          textarea
+          type="text"
+          required
+        />
+        <Input
+          ref={dueDate}
+          name="dueDate"
+          labelFor="project"
+          label="due date"
+          type="date"
+          required
+        />
+      </form>
     </Section>
   );
 }

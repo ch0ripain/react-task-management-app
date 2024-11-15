@@ -36,10 +36,10 @@ export const CustomInput = forwardRef(function CustomInput(
 
 const Input = forwardRef(function Input({ label, labelFor, ...props }, ref) {
   return (
-    <form className="relative flex flex-col">
+    <>
       <Label htmlFor={labelFor} label={label} />
       <CustomInput id={labelFor} ref={ref} {...props} />
-    </form>
+    </>
   );
 });
 
